@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewData["Title"] = "AltaCadete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="section-padding mx-auto seccion-form">
+    <form method="post" class="mx-auto form-login" asp-controller="Cadetes" asp-action="AltaCadete">
+        <h2 class="mb-5 text-center" id="">Nuevo Cadete</h2>
+        <div class="input-group">
+            <span class="input-group-text" id="basic-addon1"><i class="fas fa-user">Nombre</i></span>
+            <input type="text" class="form-control" placeholder="Nombre del Cadete" aria-label="Nombre del Cadete" aria-describedby="basic-addon1" name="nombre" required>
+        </div>
+        <div class="input-group mt-4">
+            <span class="input-group-text" id="basic-addon1"><i class="far fa-address-card">Direccion</i></span>
+            <input type="text" class="form-control" placeholder="Direccion" aria-label="Direccion" aria-describedby="basic-addon1" name="direccion" required>
+        </div>
+        <div class="input-group mt-4">
+            <span class="input-group-text" id="basic-addon1"><i class="fas fa-mobile-alt">Telefono</i></span>
+            <input type="text" class="form-control" placeholder="Telefono" aria-label="Telefono" aria-describedby="basic-addon1" name="telefono" required>
+        </div>
+        <button class="btn btn-primary w-100 mt-4" type="submit">Añadir Cadete</button>
+    </form>
+</section>
+
