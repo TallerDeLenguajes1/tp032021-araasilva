@@ -15,7 +15,6 @@ namespace TrabajoPractico3.Controllers
     {
         private readonly Logger _logger;
         private readonly DbTemporal db;
-        static int id = 0;
         public CadetesController(Logger log, DbTemporal DB)
         {
             _logger = log;
@@ -29,7 +28,7 @@ namespace TrabajoPractico3.Controllers
         }
         public IActionResult AltaCadete(string nombre, string direccion, int telefono)
         {
-            Cadete nuevoCadete = new Cadete(id++, nombre, direccion, telefono);
+            Cadete nuevoCadete = new Cadete(nombre, direccion, telefono);
             db.Cadeteria.Cadetes.Add(nuevoCadete);
             return View("Index",db.Cadeteria.Cadetes);
         }

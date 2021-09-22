@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "cJ85zy20ga7N9xLwDHPzcUt3nFpZkLbHDpCCT1L6jM3MndHmiOwzpbt7qWtn/fNC2CXpF7pjFQlfklD+UfaIRg==",
+  "dgSpecHash": "MHTFngFNJZWM4g99gZKTCX0yqONVMsPaeFq7sHK8xy3l+58ZTDet+cgKUFeZDbMfRSok93wH4DAlxfao/i2xIA==",
   "success": true,
-  "projectFilePath": "C:\\Taller 2\\Trabajos Practicos\\TrabajoPractico 3\\TrabajoPractico3\\TrabajoPractico3.csproj",
+  "projectFilePath": "C:\\Taller 2\\Trabajos Practicos\\tp032121-araasilva\\TrabajoPractico3\\TrabajoPractico3.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\arakp\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\arakp\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",

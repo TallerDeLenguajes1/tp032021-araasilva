@@ -8,7 +8,7 @@ namespace TrabajoPractico3.Models
 {
     public class Cliente
     {
-        private int id;
+        private static int id = 0;
         private string nombre;
         private string direccion;
         private int telefono;
@@ -17,9 +17,9 @@ namespace TrabajoPractico3.Models
         {
         }
 
-        public Cliente(int id, string nombre, string direccion, int telefono)
+        public Cliente(string nombre, string direccion, int telefono)
         {
-            this.id = id;
+            id++;
             this.nombre = nombre;
             this.direccion = direccion;
             this.telefono = telefono;

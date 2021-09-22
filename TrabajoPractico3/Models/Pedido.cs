@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace TrabajoPractico3.Models
 {
+  
     public class Pedido
     {
         private int numero;
@@ -15,6 +16,7 @@ namespace TrabajoPractico3.Models
 
         public Pedido()
         {
+            this.Cliente = new Cliente();
         }
 
         public Pedido(int numero, Cliente cliente, string obs, string estado)

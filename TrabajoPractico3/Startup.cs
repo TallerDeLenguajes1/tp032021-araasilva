@@ -9,11 +9,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TrabajoPractico3.Models;
 
 namespace TrabajoPractico3
 {
     public class Startup
     {
+        static readonly DbTemporal db = new();
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -26,6 +28,7 @@ namespace TrabajoPractico3
         {
             services.AddControllersWithViews();
             services.AddSingleton(NLogBuilder.ConfigureNLog("nlog.config").GetCurrentClassLogger());
+            services.AddSingleton(db);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

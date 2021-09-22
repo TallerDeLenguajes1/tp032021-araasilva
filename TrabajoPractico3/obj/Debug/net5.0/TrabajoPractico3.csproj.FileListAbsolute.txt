@@ -304,3 +304,33 @@ C:\Taller 2\Trabajos Practicos\TrabajoPractico 3\TrabajoPractico3\obj\Debug\net5
 C:\Taller 2\Trabajos Practicos\TrabajoPractico 3\TrabajoPractico3\obj\Debug\net5.0\TrabajoPractico3.genruntimeconfig.cache
 C:\Taller 2\Trabajos Practicos\TrabajoPractico 3\TrabajoPractico3\obj\Debug\net5.0\Razor\Views\Cadetes\Index.cshtml.g.cs
 C:\Taller 2\Trabajos Practicos\TrabajoPractico 3\TrabajoPractico3\obj\Debug\net5.0\TrabajoPractico3.csproj.AssemblyReference.cache
+C:\Taller 2\Trabajos Practicos\tp032121-araasilva\TrabajoPractico3\obj\Debug\net5.0\TrabajoPractico3.csproj.AssemblyReference.cache
+C:\Taller 2\Trabajos Practicos\tp032121-araasilva\TrabajoPractico3\obj\Debug\net5.0\TrabajoPractico3.GeneratedMSBuildEditorConfig.editorconfig
+C:\Taller 2\Trabajos Practicos\tp032121-araasilva\TrabajoPractico3\obj\Debug\net5.0\TrabajoPractico3.AssemblyInfoInputs.cache
+C:\Taller 2\Trabajos Practicos\tp032121-araasilva\TrabajoPractico3\obj\Debug\net5.0\TrabajoPractico3.AssemblyInfo.cs
+C:\Taller 2\Trabajos Practicos\tp032121-araasilva\TrabajoPractico3\obj\Debug\net5.0\TrabajoPractico3.csproj.CoreCompileInputs.cache
+C:\Taller 2\Trabajos Practicos\tp032121-araasilva\TrabajoPractico3\obj\Debug\net5.0\TrabajoPractico3.MvcApplicationPartsAssemblyInfo.cache
+C:\Taller 2\Trabajos Practicos\tp032121-araasilva\TrabajoPractico3\obj\Debug\net5.0\TrabajoPractico3.RazorAssemblyInfo.cache
+C:\Taller 2\Trabajos Practicos\tp032121-araasilva\TrabajoPractico3\obj\Debug\net5.0\TrabajoPractico3.RazorAssemblyInfo.cs
+C:\Taller 2\Trabajos Practicos\tp032121-araasilva\TrabajoPractico3\obj\Debug\net5.0\staticwebassets\TrabajoPractico3.StaticWebAssets.Manifest.cache
+C:\Taller 2\Trabajos Practicos\tp032121-araasilva\TrabajoPractico3\obj\Debug\net5.0\staticwebassets\TrabajoPractico3.StaticWebAssets.xml
+C:\Taller 2\Trabajos Practicos\tp032121-araasilva\TrabajoPractico3\obj\Debug\net5.0\scopedcss\bundle\TrabajoPractico3.styles.css
+C:\Taller 2\Trabajos Practicos\tp032121-araasilva\TrabajoPractico3\obj\Debug\net5.0\TrabajoPractico3.TagHelpers.input.cache
+C:\Taller 2\Trabajos Practicos\tp032121-araasilva\TrabajoPractico3\obj\Debug\net5.0\TrabajoPractico3.TagHelpers.output.cache
+C:\Taller 2\Trabajos Practicos\tp032121-araasilva\TrabajoPractico3\obj\Debug\net5.0\TrabajoPractico3.RazorCoreGenerate.cache
+C:\Taller 2\Trabajos Practicos\tp032121-araasilva\TrabajoPractico3\obj\Debug\net5.0\Razor\Views\Cadetes\AltaCadete.cshtml.g.cs
+C:\Taller 2\Trabajos Practicos\tp032121-araasilva\TrabajoPractico3\obj\Debug\net5.0\Razor\Views\Cadetes\Index.cshtml.g.cs
+C:\Taller 2\Trabajos Practicos\tp032121-araasilva\TrabajoPractico3\obj\Debug\net5.0\Razor\Views\Home\Index.cshtml.g.cs
+C:\Taller 2\Trabajos Practicos\tp032121-araasilva\TrabajoPractico3\obj\Debug\net5.0\Razor\Views\Home\Privacy.cshtml.g.cs
+C:\Taller 2\Trabajos Practicos\tp032121-araasilva\TrabajoPractico3\obj\Debug\net5.0\Razor\Views\Pedidos\AltaPedido.cshtml.g.cs
+C:\Taller 2\Trabajos Practicos\tp032121-araasilva\TrabajoPractico3\obj\Debug\net5.0\Razor\Views\Shared\Error.cshtml.g.cs
+C:\Taller 2\Trabajos Practicos\tp032121-araasilva\TrabajoPractico3\obj\Debug\net5.0\Razor\Views\Shared\_Layout.cshtml.g.cs
+C:\Taller 2\Trabajos Practicos\tp032121-araasilva\TrabajoPractico3\obj\Debug\net5.0\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
+C:\Taller 2\Trabajos Practicos\tp032121-araasilva\TrabajoPractico3\obj\Debug\net5.0\Razor\Views\_ViewImports.cshtml.g.cs
+C:\Taller 2\Trabajos Practicos\tp032121-araasilva\TrabajoPractico3\obj\Debug\net5.0\Razor\Views\_ViewStart.cshtml.g.cs
+C:\Taller 2\Trabajos Practicos\tp032121-araasilva\TrabajoPractico3\obj\Debug\net5.0\TrabajoPractico3.RazorTargetAssemblyInfo.cache
+C:\Taller 2\Trabajos Practicos\tp032121-araasilva\TrabajoPractico3\obj\Debug\net5.0\TrabajoPractico3.RazorTargetAssemblyInfo.cs
+C:\Taller 2\Trabajos Practicos\tp032121-araasilva\TrabajoPractico3\obj\Debug\net5.0\TrabajoPractico3.dll
+C:\Taller 2\Trabajos Practicos\tp032121-araasilva\TrabajoPractico3\obj\Debug\net5.0\ref\TrabajoPractico3.dll
+C:\Taller 2\Trabajos Practicos\tp032121-araasilva\TrabajoPractico3\obj\Debug\net5.0\TrabajoPractico3.pdb
+C:\Taller 2\Trabajos Practicos\tp032121-araasilva\TrabajoPractico3\obj\Debug\net5.0\Razor\Views\Pedidos\Index.cshtml.g.cs
