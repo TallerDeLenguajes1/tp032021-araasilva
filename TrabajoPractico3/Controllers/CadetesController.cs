@@ -14,20 +14,30 @@ namespace TrabajoPractico3.Controllers
     public class CadetesController : Controller
     {
         private readonly Logger _logger;
-
-        public CadetesController(ILogger<CadetesController> logger, Logger log)
+        private readonly DbTemporal db;
+        static int id = 0;
+        public CadetesController(Logger log, DbTemporal DB)
         {
             _logger = log;
             _logger.Debug("NLog injected into HomeController");
+            db = DB;
         }
 
         public IActionResult Index()
         {
-            return View();
+            return View(db.Cadeteria.Cadetes);
         }
-        public IActionResult AltaCadete()
+        public IActionResult AltaCadete(string nombre, string direccion, int telefono)
         {
-            return View();
+            Cadete nuevoCadete = new Cadete(id++, nombre, direccion, telefono);
+            db.Cadeteria.Cadetes.Add(nuevoCadete);
+            return View("Index",db.Cadeteria.Cadetes);
+        }
+        
+        public IActionResult Borrar(int id)
+        {
+            db.Cadeteria.Cadetes.Remove(db.Cadeteria.Cadetes[id]);
+            return View("Index", db.Cadeteria.Cadetes);
         }
     }
 }

@@ -1,17 +1,53 @@
-﻿@model List<TrabajoPractico3.Models.Cadete>
-@{
+﻿@{
     ViewData["Title"] = "Listado de cadetes";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@model List<TrabajoPractico3.Models.Cadete>
 
 <div class="container">
 
     <div class="row">
         <div class="col-sm-6">
-            <a class="btn btn-success d-block" asp-action="AltaCadete" asp-controller="Cadetes">Crear cadete</a>
+            <h3>Listado de Cadetes</h3>
         </div>
         <div class="col-sm-6">
-
+            <a class="btn btn-success d-block" asp-action="AltaCadete" asp-controller="Cadetes">Crear cadete</a>
+        </div>
+        
+        <div class="row">
+            @if(Model.Count() > 0){
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <td>Id</td>
+                            <td>Nombre</td>
+                            <td>Direccion</td>
+                            <td>Telefono</td>
+                            <td>Cantidad de pedidos</td>
+                            <td>Accion</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                        <tr>
+                            <td>@item.Id</td>
+                            <td>@item.Nombre</td>
+                            <td>@item.Direccion</td>
+                            <td>@item.Telefono</td>
+                            <td>@item.Pedidos.Count()</td>
+                            <td>
+                                <a asp-controller="Cadetes" asp-action="Borrar" asp-route-id="@item.Id">Eliminar</a>
+                            </td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+            else
+            {
+                <p>No existen registros</p>
+            }
         </div>
     </div>
 </div>

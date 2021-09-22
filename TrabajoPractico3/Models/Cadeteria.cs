@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TrabajoPractico3.Models
 {
-    class Cadeteria
+    public class Cadeteria
     {
         private string nombre;
         private List<Cadete> cadetes;

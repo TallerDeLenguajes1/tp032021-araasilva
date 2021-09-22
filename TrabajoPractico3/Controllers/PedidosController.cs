@@ -12,7 +12,7 @@ namespace TrabajoPractico3.Controllers
     {
         private readonly Logger _logger;
 
-        public PedidosController(ILogger<PedidosController> logger, Logger log)
+        public PedidosController(Logger log)
         {
             _logger = log;
             _logger.Debug("NLog injected into HomeController");

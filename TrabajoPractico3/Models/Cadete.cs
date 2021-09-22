@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TrabajoPractico3.Models
 {
-    class Cadete
+    public class Cadete
     {
         private int id;
         private string nombre;
