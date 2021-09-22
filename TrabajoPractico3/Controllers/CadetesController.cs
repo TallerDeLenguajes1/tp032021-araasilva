@@ -21,6 +21,10 @@ namespace TrabajoPractico3.Controllers
             _logger.Debug("NLog injected into HomeController");
         }
 
+        public IActionResult Index()
+        {
+            return View();
+        }
         public IActionResult AltaCadete()
         {
             return View();

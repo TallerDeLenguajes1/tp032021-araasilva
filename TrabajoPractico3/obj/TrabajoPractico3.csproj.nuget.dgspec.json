@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Taller 2\\Tp03\\TrabajoPractico3\\TrabajoPractico3.csproj": {}
+    "C:\\Taller 2\\Trabajos Practicos\\TrabajoPractico 3\\TrabajoPractico3\\TrabajoPractico3.csproj": {}
   },
   "projects": {
-    "C:\\Taller 2\\Tp03\\TrabajoPractico3\\TrabajoPractico3.csproj": {
+    "C:\\Taller 2\\Trabajos Practicos\\TrabajoPractico 3\\TrabajoPractico3\\TrabajoPractico3.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Taller 2\\Tp03\\TrabajoPractico3\\TrabajoPractico3.csproj",
+        "projectUniqueName": "C:\\Taller 2\\Trabajos Practicos\\TrabajoPractico 3\\TrabajoPractico3\\TrabajoPractico3.csproj",
         "projectName": "TrabajoPractico3",
-        "projectPath": "C:\\Taller 2\\Tp03\\TrabajoPractico3\\TrabajoPractico3.csproj",
+        "projectPath": "C:\\Taller 2\\Trabajos Practicos\\TrabajoPractico 3\\TrabajoPractico3\\TrabajoPractico3.csproj",
         "packagesPath": "C:\\Users\\arakp\\.nuget\\packages\\",
-        "outputPath": "C:\\Taller 2\\Tp03\\TrabajoPractico3\\obj\\",
+        "outputPath": "C:\\Taller 2\\Trabajos Practicos\\TrabajoPractico 3\\TrabajoPractico3\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\arakp\\AppData\\Roaming\\NuGet\\NuGet.Config",

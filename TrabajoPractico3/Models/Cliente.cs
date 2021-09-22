@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Tp3
+namespace TrabajoPractico3.Models
 {
     class Cliente
     {
@@ -12,6 +12,18 @@ namespace Tp3
         private string nombre;
         private string direccion;
         private int telefono;
+
+        public Cliente()
+        {
+        }
+
+        public Cliente(int id, string nombre, string direccion, int telefono)
+        {
+            this.id = id;
+            this.nombre = nombre;
+            this.direccion = direccion;
+            this.telefono = telefono;
+        }
 
         public int Id { get => id; set => id = value; }
         public string Nombre { get => nombre; set => nombre = value; }

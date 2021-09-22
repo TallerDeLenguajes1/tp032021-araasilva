@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Tp3
+namespace TrabajoPractico3.Models
 {
     class Cadete
     {
@@ -12,12 +12,24 @@ namespace Tp3
         private string nombre;
         private string direccion;
         private int telefono;
-        private List<Pedidos> pedidos;
+        private List<Pedido> pedidos;
+
+        public Cadete()
+        {
+        }
+
+        public Cadete(int id, string nombre, string direccion, int telefono)
+        {
+            this.id = id;
+            this.nombre = nombre;
+            this.direccion = direccion;
+            this.telefono = telefono;
+        }
 
         public int Id { get => id; set => id = value; }
         public string Nombre { get => nombre; set => nombre = value; }
         public string Direccion { get => direccion; set => direccion = value; }
         public int Telefono { get => telefono; set => telefono = value; }
-        internal List<Pedidos> Pedidos { get => pedidos; set => pedidos = value; }
+        internal List<Pedido> Pedidos { get => pedidos; set => pedidos = value; }
     }
 }
