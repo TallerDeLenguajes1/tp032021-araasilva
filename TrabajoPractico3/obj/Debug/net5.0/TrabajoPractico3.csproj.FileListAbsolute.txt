@@ -303,3 +303,4 @@ C:\Taller 2\Trabajos Practicos\TrabajoPractico 3\TrabajoPractico3\obj\Debug\net5
 C:\Taller 2\Trabajos Practicos\TrabajoPractico 3\TrabajoPractico3\obj\Debug\net5.0\TrabajoPractico3.pdb
 C:\Taller 2\Trabajos Practicos\TrabajoPractico 3\TrabajoPractico3\obj\Debug\net5.0\TrabajoPractico3.genruntimeconfig.cache
 C:\Taller 2\Trabajos Practicos\TrabajoPractico 3\TrabajoPractico3\obj\Debug\net5.0\Razor\Views\Cadetes\Index.cshtml.g.cs
+C:\Taller 2\Trabajos Practicos\TrabajoPractico 3\TrabajoPractico3\obj\Debug\net5.0\TrabajoPractico3.csproj.AssemblyReference.cache
