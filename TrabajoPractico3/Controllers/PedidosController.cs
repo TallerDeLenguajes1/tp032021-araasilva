@@ -25,19 +25,27 @@ namespace TrabajoPractico3.Controllers
         {
             return View(db.Cadeteria.Pedidos);
         }
-        public IActionResult AltaPedido(int numero, string nombre, string direccion, int telefono, string obs, string estado)
+        public IActionResult CreatePedido()
         {
-            
+            return View(db.Cadeteria.Cadetes);
+        }
+        public IActionResult AltaPedido(int numero, string nombre, string direccion, int telefono, string obs, string estado, int id_cadete)
+        {
             Cliente nuevoCliente = new Cliente(nombre, direccion, telefono);
             Pedido nuevoPedido = new Pedido(numero, nuevoCliente, obs, estado);
-            //db.Cadeteria.Cadetes[id_cadete].Pedidos.Add(nuevoPedido);
+            foreach(var item in db.Cadeteria.Cadetes)
+            {
+                if(item.Id == id_cadete)
+                {
+                    item.Pedidos.Add(nuevoPedido);
+                }
+            }
             db.Cadeteria.Pedidos.Add(nuevoPedido);
-            return View("index", db.Cadeteria);
+            return View("index", db.Cadeteria.Pedidos);
         }
-
         public IActionResult Borrar(int id)
         {
-
+            
             return View("Index", db.Cadeteria.Pedidos);
         }
     }

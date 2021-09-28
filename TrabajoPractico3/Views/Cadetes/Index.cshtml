@@ -36,7 +36,7 @@
                             <td>@item.Telefono</td>
                             <td>@item.Pedidos.Count()</td>
                             <td>
-                                <a asp-controller="Cadetes" asp-action="Borrar" asp-route-id="@item.Id">Eliminar</a>
+                                <a asp-controller="Cadetes" asp-action="Borrar" asp-route-id="@item.Id" class="btn btn-danger">Eliminar</a>
                             </td>
                         </tr>
                         }

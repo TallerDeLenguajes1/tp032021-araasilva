@@ -1,9 +1,10 @@
-﻿@model List<TrabajoPractico3.Models.Cadeteria>
-@{
-    ViewData["Title"] = "AltaPedidos";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+﻿@{
+    ViewData["Title"] = "Crear Pedido";
 }
+@model List<TrabajoPractico3.Models.Cadete> 
 
+@if(Model.Count() > 0)
+            {
 <section class="section-padding mx-auto seccion-form">
     <form method="post" class="mx-auto form-login" asp-controller="Pedidos" asp-action="AltaPedido">
         <h2 class="mb-5 text-center" id="">Nuevo Pedido</h2>
@@ -20,8 +21,6 @@
             <input type="text" class="form-control" placeholder="Estado" aria-label="Estado" aria-describedby="basic-addon1" name="estado" required>
         </div><br />
 
-
-
         <label for="formGroupExampleInput">Datos del Cliente</label>
         <div class="input-group">
             <span class="input-group-text" id="basic-addon1"><i class="fas fa-user">Nombre y apellido</i></span>
@@ -36,8 +35,21 @@
             <input type="text" class="form-control" placeholder="Telefono" aria-label="Telefono" aria-describedby="basic-addon1" name="telefono" required>
         </div>
 
+        <div class="input-group mt-4">
+            <span class="input-group-text" id="basic-addon1"><i class="fas fa-mobile-alt">Seleccione un cadete</i></span>
+            <select class="form-control" id="id_cadete" name="id_cadete" required>
+                @foreach (var item in Model)
+                {
+                    <option value="@item.Id">@item.Nombre</option>
+                }
 
+            </select>
+        </div>
         <button class="btn btn-primary w-100 mt-4" type="submit">Añadir Pedido</button>
     </form>
-</section>
+</section>  }
+else
+{
+  <p>Debe crear al menos un cadete</p>
+}
 

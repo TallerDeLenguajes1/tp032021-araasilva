@@ -40,7 +40,7 @@ namespace TrabajoPractico3.Controllers
 
         public IActionResult Borrar(int id)
         {
-            //db.Cadeteria.Cadetes.Remove();
+            db.Cadeteria.Cadetes.RemoveAll(x => x.Id == id);
             return View("Index", db.Cadeteria.Cadetes);
         }
     }

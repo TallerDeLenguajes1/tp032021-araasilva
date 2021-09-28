@@ -321,7 +321,6 @@ C:\Taller 2\Trabajos Practicos\tp032121-araasilva\TrabajoPractico3\obj\Debug\net
 C:\Taller 2\Trabajos Practicos\tp032121-araasilva\TrabajoPractico3\obj\Debug\net5.0\Razor\Views\Cadetes\Index.cshtml.g.cs
 C:\Taller 2\Trabajos Practicos\tp032121-araasilva\TrabajoPractico3\obj\Debug\net5.0\Razor\Views\Home\Index.cshtml.g.cs
 C:\Taller 2\Trabajos Practicos\tp032121-araasilva\TrabajoPractico3\obj\Debug\net5.0\Razor\Views\Home\Privacy.cshtml.g.cs
-C:\Taller 2\Trabajos Practicos\tp032121-araasilva\TrabajoPractico3\obj\Debug\net5.0\Razor\Views\Pedidos\AltaPedido.cshtml.g.cs
 C:\Taller 2\Trabajos Practicos\tp032121-araasilva\TrabajoPractico3\obj\Debug\net5.0\Razor\Views\Pedidos\Index.cshtml.g.cs
 C:\Taller 2\Trabajos Practicos\tp032121-araasilva\TrabajoPractico3\obj\Debug\net5.0\Razor\Views\Shared\Error.cshtml.g.cs
 C:\Taller 2\Trabajos Practicos\tp032121-araasilva\TrabajoPractico3\obj\Debug\net5.0\Razor\Views\Shared\_Layout.cshtml.g.cs
@@ -458,3 +457,4 @@ C:\Taller 2\Trabajos Practicos\tp032121-araasilva\TrabajoPractico3\obj\Debug\net
 C:\Taller 2\Trabajos Practicos\tp032121-araasilva\TrabajoPractico3\obj\Debug\net5.0\TrabajoPractico3.csproj.CopyComplete
 C:\Taller 2\Trabajos Practicos\tp032121-araasilva\TrabajoPractico3\obj\Debug\net5.0\TrabajoPractico3.genruntimeconfig.cache
 C:\Taller 2\Trabajos Practicos\tp032121-araasilva\TrabajoPractico3\obj\Debug\net5.0\Razor\Views\Cadetes\CreateCadete.cshtml.g.cs
+C:\Taller 2\Trabajos Practicos\tp032121-araasilva\TrabajoPractico3\obj\Debug\net5.0\Razor\Views\Pedidos\CreatePedido.cshtml.g.cs
