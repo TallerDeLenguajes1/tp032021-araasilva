@@ -1,6 +1,5 @@
 ﻿@{
     ViewData["Title"] = "Listado de cadetes";
-    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @model List<TrabajoPractico3.Models.Cadete>
 
@@ -11,7 +10,7 @@
             <h3>Listado de Cadetes</h3>
         </div>
         <div class="col-sm-6">
-            <a class="btn btn-success d-block" asp-action="AltaCadete" asp-controller="Cadetes">Crear cadete</a>
+            <a class="btn btn-success d-block" asp-area="" asp-action="CreateCadete" asp-controller="Cadetes">Crear cadete</a>
         </div>
         
         <div class="row">

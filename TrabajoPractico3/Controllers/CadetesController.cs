@@ -26,16 +26,21 @@ namespace TrabajoPractico3.Controllers
         {
             return View(db.Cadeteria.Cadetes);
         }
-        public IActionResult AltaCadete(string nombre, string direccion, int telefono)
+
+        public IActionResult CreateCadete()
         {
-            Cadete nuevoCadete = new Cadete(nombre, direccion, telefono);
+            return View();
+        }
+        public IActionResult AltaCadete(int id, string nombre, string direccion, int telefono)
+        {
+            Cadete nuevoCadete = new Cadete(id,nombre, direccion, telefono);
             db.Cadeteria.Cadetes.Add(nuevoCadete);
             return View("Index",db.Cadeteria.Cadetes);
         }
-        
+
         public IActionResult Borrar(int id)
         {
-            db.Cadeteria.Cadetes.Remove(db.Cadeteria.Cadetes[id]);
+            //db.Cadeteria.Cadetes.Remove();
             return View("Index", db.Cadeteria.Cadetes);
         }
     }

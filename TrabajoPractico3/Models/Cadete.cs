@@ -8,7 +8,7 @@ namespace TrabajoPractico3.Models
 {
     public class Cadete
     {
-        private static int id = 0;
+        private int id;
         private string nombre;
         private string direccion;
         private int telefono;
@@ -16,20 +16,22 @@ namespace TrabajoPractico3.Models
 
         public Cadete()
         {
+            pedidos = new List<Pedido>();
         }
 
-        public Cadete(string nombre, string direccion, int telefono)
+        public Cadete(int id, string nombre, string direccion, int telefono)
         {
-            id++;
+            this.id = id;
             this.nombre = nombre;
             this.direccion = direccion;
             this.telefono = telefono;
+            pedidos = new List<Pedido>();
         }
 
         public int Id { get => id; set => id = value; }
         public string Nombre { get => nombre; set => nombre = value; }
         public string Direccion { get => direccion; set => direccion = value; }
         public int Telefono { get => telefono; set => telefono = value; }
-        internal List<Pedido> Pedidos { get => pedidos; set => pedidos = value; }
+        public List<Pedido> Pedidos { get => pedidos; set => pedidos = value; }
     }
 }

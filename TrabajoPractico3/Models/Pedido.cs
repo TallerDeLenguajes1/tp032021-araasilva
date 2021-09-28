@@ -16,7 +16,7 @@ namespace TrabajoPractico3.Models
 
         public Pedido()
         {
-            this.Cliente = new Cliente();
+            this.cliente = new Cliente();
         }
 
         public Pedido(int numero, Cliente cliente, string obs, string estado)
@@ -30,6 +30,6 @@ namespace TrabajoPractico3.Models
         public int Numero { get => numero; set => numero = value; }
         public string Obs { get => obs; set => obs = value; }
         public string Estado { get => estado; set => estado = value; }
-        internal Cliente Cliente { get => cliente; set => cliente = value; }
+        public Cliente Cliente { get => cliente; set => cliente = value; }
     }
 }

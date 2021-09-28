@@ -8,21 +8,23 @@ namespace TrabajoPractico3.Models
 {
     public class Cadeteria
     {
-        private string nombre;
+    
         private List<Cadete> cadetes;
         private List<Pedido> pedidos;
         public Cadeteria()
         {
+            cadetes = new List<Cadete>();
+            pedidos = new List<Pedido>();
             
         }
 
-        public Cadeteria(string nombre)
+        public Cadeteria(List<Cadete> _Cadetes, List<Pedido> _Pedidos)
         {
-            this.nombre = nombre;
+            cadetes = _Cadetes;
+            pedidos = _Pedidos;
         }
 
-        public string Nombre { get => nombre; set => nombre = value; }
-        internal List<Cadete> Cadetes { get => cadetes; set => cadetes = value; }
-        internal List<Pedido> Pedidos { get => pedidos; set => pedidos = value; }
+        public List<Cadete> Cadetes { get => cadetes; set => cadetes = value; }
+        public List<Pedido> Pedidos { get => pedidos; set => pedidos = value; }
     }
 }
