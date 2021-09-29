@@ -39,6 +39,43 @@ namespace TrabajoPractico3.Controllers
             return View("Index",db.Cadeteria.Cadetes);
         }
 
+        public IActionResult Modificar(int id)
+        {
+            Cadete cadeteADevolver = null;
+            for (int i = 0; i < db.Cadeteria.Cadetes.Count(); i++)
+            {
+                if (db.Cadeteria.Cadetes[i].Id == id)
+                {
+                    cadeteADevolver = db.Cadeteria.Cadetes[i];
+                    break;
+                }
+            }
+            if (cadeteADevolver != null)
+                return View(cadeteADevolver);
+            else
+                return View("Index");
+        }
+        public IActionResult ModificarCadete(int id, string nombre, string direccion, int telefono)
+        {
+            Cadete cadeteAModificar = null;
+            for (int i = 0; i < db.Cadeteria.Cadetes.Count(); i++)
+            {
+                if (db.Cadeteria.Cadetes[i].Id == id)
+                {
+                    cadeteAModificar = db.Cadeteria.Cadetes[i];
+                    break;
+                }
+            }
+            if (cadeteAModificar != null)
+            {
+                cadeteAModificar.Nombre = nombre;
+                cadeteAModificar.Direccion = direccion;
+                cadeteAModificar.Telefono = telefono;
+            }
+            db.guardarCadetes(db.Cadeteria.Cadetes);
+            return View("Index", db.Cadeteria.Cadetes);
+        }
+
         public IActionResult Borrar(int id)
         {
             db.Cadeteria.Cadetes.RemoveAll(x => x.Id == id);
