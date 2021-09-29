@@ -55,7 +55,7 @@ namespace TrabajoPractico3.Controllers
             else
                 return View("Index");
         }
-        public IActionResult ModificarCadete(int id, string nombre, string direccion, int telefono)
+        public IActionResult ModificarCadete(int id, string nombre, string direccion, long telefono)
         {
             Cadete cadeteAModificar = null;
             for (int i = 0; i < db.Cadeteria.Cadetes.Count(); i++)

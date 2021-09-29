@@ -24,19 +24,20 @@
                                 <td>Observacion</td>
                                 <td>Estado</td>
                                 <td>Nombre del cliente</td>
-                                <td>Accion</td>
+                                <td>Acciones</td>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach (var item in Model)
                             {
                                 <tr>
-                                    <td>@item.Numero</td>
+                                    <td>@item.Id</td>
                                     <td>@item.Obs</td>
                                     <td>@item.Estado</td>
                                     <td>@item.Cliente.Nombre</td>
                                     <td>
-                                        <a asp-controller="Pedidos" asp-action="Borrar" asp-route-id="@item.Numero" class="btn btn-danger">Eliminar</a>
+                                        <a asp-controller="Pedidos" asp-action="Modificar" asp-route-id="@item.Id" class="btn btn-warning">Editar</a>
+                                        <a asp-controller="Pedidos" asp-action="Borrar" asp-route-id="@item.Id" class="btn btn-danger">Eliminar</a>
                                     </td>
                                 </tr>
                             }

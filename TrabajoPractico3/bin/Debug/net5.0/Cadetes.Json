@@ -1,3 +1,1 @@
-[]
-d":21606700,"Nombre":"abigail","Direccion":"Mariano moreno","Telefono":2031017,"Pedidos":[]}]
-{"Id":21606700,"Nombre":"abigail","Direccion":"Mariano moreno","Telefono":2031017,"Pedidos":[]}]
+[{"Id":39726153,"Nombre":"Araceli Abigail","Direccion":"Mariano moreno","Telefono":381553683,"Pedidos":[{"Id":0,"Obs":"entrega de comida","Estado":"en camino","Cliente":{"Id":4,"Nombre":"abigail","Direccion":"Mariano moreno","Telefono":0}},{"Id":0,"Obs":"entrega de comida","Estado":"en camino","Cliente":{"Id":4,"Nombre":"Araceli Abigail","Direccion":"Mariano moreno","Telefono":3815536831}},{"Id":0,"Obs":"htdd","Estado":"Tucum\u00E1n","Cliente":{"Id":4,"Nombre":"abigail","Direccion":"Mariano moreno","Telefono":65456465}}]}]

@@ -461,3 +461,4 @@ C:\Taller 2\Trabajos Practicos\tp032121-araasilva\TrabajoPractico3\obj\Debug\net
 C:\Taller 2\Trabajos Practicos\tp032121-araasilva\TrabajoPractico3\bin\Debug\net5.0\Cadetes.Json
 C:\Taller 2\Trabajos Practicos\tp032121-araasilva\TrabajoPractico3\bin\Debug\net5.0\Pedidos.json
 C:\Taller 2\Trabajos Practicos\tp032121-araasilva\TrabajoPractico3\obj\Debug\net5.0\Razor\Views\Cadetes\Modificar.cshtml.g.cs
+C:\Taller 2\Trabajos Practicos\tp032121-araasilva\TrabajoPractico3\obj\Debug\net5.0\Razor\Views\Pedidos\Modificar.cshtml.g.cs

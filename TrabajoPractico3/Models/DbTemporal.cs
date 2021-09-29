@@ -71,15 +71,22 @@ namespace TrabajoPractico3.Models
             List<Pedido> CadetesJson = new List<Pedido>();
             if (File.Exists(pathPedidos))
             {
-                using (FileStream miArchivoCadetes = new FileStream(pathPedidos, FileMode.OpenOrCreate))
+                try
                 {
-                    using (StreamReader strReader = new StreamReader(miArchivoCadetes))
+                    using (FileStream miArchivoCadetes = new FileStream(pathPedidos, FileMode.OpenOrCreate))
                     {
-                        string pedidos = strReader.ReadToEnd();
-                        CadetesJson = JsonSerializer.Deserialize<List<Pedido>>(pedidos);
-                        strReader.Close();
-                        strReader.Dispose();
+                        using (StreamReader strReader = new StreamReader(miArchivoCadetes))
+                        {
+                            string pedidos = strReader.ReadToEnd();
+                            CadetesJson = JsonSerializer.Deserialize<List<Pedido>>(pedidos);
+                            strReader.Close();
+                            strReader.Dispose();
+                        }
                     }
+                }
+                catch
+                {
+                    return CadetesJson;
                 }
             }
             return CadetesJson;

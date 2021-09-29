@@ -9,7 +9,7 @@ namespace TrabajoPractico3.Models
   
     public class Pedido
     {
-        private int numero;
+        private int id;
         private Cliente cliente;
         private string obs;
         private string estado;
@@ -19,15 +19,15 @@ namespace TrabajoPractico3.Models
             this.cliente = new Cliente();
         }
 
-        public Pedido(int numero, Cliente cliente, string obs, string estado)
+        public Pedido(int id, Cliente cliente, string obs, string estado)
         {
-            this.numero = numero;
+            this.id = id;
             this.cliente = cliente;
             this.obs = obs;
             this.estado = estado;
         }
 
-        public int Numero { get => numero; set => numero = value; }
+        public int Id { get => id; set => id = value; }
         public string Obs { get => obs; set => obs = value; }
         public string Estado { get => estado; set => estado = value; }
         public Cliente Cliente { get => cliente; set => cliente = value; }
