@@ -19,6 +19,8 @@ namespace TrabajoPractico3
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+            db.Cadeteria.Cadetes = db.getCadetes();
+            db.Cadeteria.Pedidos = db.getPedidos();
         }
 
         public IConfiguration Configuration { get; }

@@ -35,12 +35,14 @@ namespace TrabajoPractico3.Controllers
         {
             Cadete nuevoCadete = new Cadete(id,nombre, direccion, telefono);
             db.Cadeteria.Cadetes.Add(nuevoCadete);
+            db.guardarCadetes(db.Cadeteria.Cadetes);
             return View("Index",db.Cadeteria.Cadetes);
         }
 
         public IActionResult Borrar(int id)
         {
             db.Cadeteria.Cadetes.RemoveAll(x => x.Id == id);
+            db.guardarCadetes(db.Cadeteria.Cadetes);
             return View("Index", db.Cadeteria.Cadetes);
         }
     }

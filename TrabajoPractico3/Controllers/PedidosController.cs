@@ -41,11 +41,13 @@ namespace TrabajoPractico3.Controllers
                 }
             }
             db.Cadeteria.Pedidos.Add(nuevoPedido);
+            db.guardarPedidos(db.Cadeteria.Pedidos);
+            db.guardarCadetes(db.Cadeteria.Cadetes);
             return View("index", db.Cadeteria.Pedidos);
         }
         public IActionResult Borrar(int id)
         {
-            
+            db.Cadeteria.Pedidos.RemoveAll(x => x.Numero == id);
             return View("Index", db.Cadeteria.Pedidos);
         }
     }
