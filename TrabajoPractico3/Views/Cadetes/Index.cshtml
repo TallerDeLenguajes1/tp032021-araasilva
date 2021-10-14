@@ -6,37 +6,41 @@
 <div class="container">
 
     <div class="row">
-        <div class="col-sm-6">
+        <div class="col-sm-10">
             <h3>Listado de Cadetes</h3>
         </div>
-        <div class="col-sm-6">
-            <a class="btn btn-success d-block" asp-area="" asp-action="CreateCadete" asp-controller="Cadetes">Crear cadete</a>
+        <div class="col-sm-2">
+            <a class="btn btn-success d-block" asp-area="" asp-action="CreateCadete" asp-controller="Cadetes">Agregar cadete</a>
         </div>
         
         <div class="row">
             @if(Model.Count() >0 ){
                 <table class="table table-bordered table-striped">
-                    <thead>
+                    <thead >
                         <tr>
-                            <td>Id</td>
+                            <td>DNI</td>
                             <td>Nombre</td>
                             <td>Direccion</td>
                             <td>Telefono</td>
                             <td>Cant de pedidos</td>
-                            <td>Accion</td>
+                            <td>Acciones</td>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach (var item in Model)
                         {
-                        <tr>
-                            <td>@item.Id</td>
-                            <td>@item.Nombre</td>
-                            <td>@item.Direccion</td>
-                            <td>@item.Telefono</td>
-                            <td>@item.Pedidos.Count()</td>
-                            <td>
+                            <tr>
+                                <td>@item.Id</td>
+                                <td>@item.Nombre</td>
+                                <td>@item.Direccion</td>
+                                <td>@item.Telefono</td>
+                                <td>@item.Pedidos.Count()</td>
+                                <td>
                                 <a asp-controller="Cadetes" asp-action="Modificar" asp-route-id="@item.Id" class="btn btn-warning">Editar</a>
+                                    @if(item.Pedidos.Count() > 0)
+                                     {
+                                        <a asp-controller="Cadetes" asp-action="Liquidar" asp-route-id="@item.Id" class="btn btn-info">Pagar</a>
+                                     }
                                 <a asp-controller="Cadetes" asp-action="Borrar" asp-route-id="@item.Id" class="btn btn-danger">Eliminar</a>
                             </td>
                         </tr>

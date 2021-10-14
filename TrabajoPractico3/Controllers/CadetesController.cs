@@ -31,55 +31,51 @@ namespace TrabajoPractico3.Controllers
         {
             return View();
         }
-        public IActionResult AltaCadete(int id, string nombre, string direccion, int telefono)
+        public IActionResult AltaCadete(int id, string nombre, string direccion, string telefono)
         {
-            Cadete nuevoCadete = new Cadete(id,nombre, direccion, telefono);
+            Cadete nuevoCadete = new Cadete(id, nombre, direccion, telefono);
             db.Cadeteria.Cadetes.Add(nuevoCadete);
             db.guardarCadetes(db.Cadeteria.Cadetes);
-            return View("Index",db.Cadeteria.Cadetes);
+            return View("Index", db.Cadeteria.Cadetes);
+            /*Cadete nuevoCadete = new Cadete(id,nombre, direccion, telefono);
+            db.guardarCadete(nuevoCadete);
+            return View("Index",db.Cadeteria.Cadetes);*/
         }
 
         public IActionResult Modificar(int id)
         {
-            Cadete cadeteADevolver = null;
-            for (int i = 0; i < db.Cadeteria.Cadetes.Count(); i++)
-            {
-                if (db.Cadeteria.Cadetes[i].Id == id)
-                {
-                    cadeteADevolver = db.Cadeteria.Cadetes[i];
-                    break;
-                }
-            }
+            Cadete cadeteADevolver = db.buscarCadete(db.Cadeteria.Cadetes, id);
+            
             if (cadeteADevolver != null)
                 return View(cadeteADevolver);
             else
                 return View("Index");
         }
-        public IActionResult ModificarCadete(int id, string nombre, string direccion, long telefono)
+        public IActionResult ModificarCadete(int id, string nombre, string direccion, string telefono)
         {
-            Cadete cadeteAModificar = null;
-            for (int i = 0; i < db.Cadeteria.Cadetes.Count(); i++)
-            {
-                if (db.Cadeteria.Cadetes[i].Id == id)
-                {
-                    cadeteAModificar = db.Cadeteria.Cadetes[i];
-                    break;
-                }
-            }
-            if (cadeteAModificar != null)
-            {
-                cadeteAModificar.Nombre = nombre;
-                cadeteAModificar.Direccion = direccion;
-                cadeteAModificar.Telefono = telefono;
-            }
-            db.guardarCadetes(db.Cadeteria.Cadetes);
+            db.ModificarCadete(id, nombre, direccion, telefono);
             return View("Index", db.Cadeteria.Cadetes);
+        }
+
+        public IActionResult Liquidar(int id)
+        {
+            Cadete cadeteALiquidar = db.buscarCadete(db.Cadeteria.Cadetes, id);
+ 
+            if(cadeteALiquidar != null)
+            {
+                return View(cadeteALiquidar);
+            }
+            return View("Index");
+        }
+
+        public IActionResult LiquidarCadete(int id)
+        {
+            return View("Index");
         }
 
         public IActionResult Borrar(int id)
         {
-            db.Cadeteria.Cadetes.RemoveAll(x => x.Id == id);
-            db.guardarCadetes(db.Cadeteria.Cadetes);
+            db.DeleteCadete(id);
             return View("Index", db.Cadeteria.Cadetes);
         }
     }

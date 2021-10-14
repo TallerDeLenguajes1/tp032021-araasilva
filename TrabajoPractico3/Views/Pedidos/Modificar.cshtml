@@ -15,8 +15,13 @@
         </div>
         <div class="input-group mt-4">
             <span class="input-group-text" id="basic-addon1"><i class="fas fa-mobile-alt">Estado</i></span>
-            <input type="text" class="form-control" value="@Model.Estado" aria-describedby="basic-addon1" name="estado" required>
-        </div><br />
+            <select class="form-control" id="estado" name="estado" value="@Model.Estado.ToString()" required>
+                <option value="@TrabajoPractico3.Models.TipoDeEstados.En_camino">En camino</option>
+                <option value="@TrabajoPractico3.Models.TipoDeEstados.Entregado">Entregado</option>
+                <option value="@TrabajoPractico3.Models.TipoDeEstados.No_Entregado">No entregado</option>
+            </select>
+        </div>
+        <input type="hidden" value="@Model.Id_cadete" id="id_cadete" name="id_cadete"/>
 
         <label for="formGroupExampleInput">Datos del Cliente</label>
         <div class="input-group">
@@ -29,8 +34,8 @@
         </div>
         <div class="input-group mt-4">
             <span class="input-group-text" id="basic-addon1"><i class="fas fa-mobile-alt">Teléfono</i></span>
-            <input type="number" class="form-control" value="@Model.Cliente.Telefono" aria-describedby="basic-addon1" name="telefono" required>
+            <input type="text" class="form-control" value="@Model.Cliente.Telefono" aria-describedby="basic-addon1" name="telefono" required>
         </div>
-        <button class="btn btn-primary w-100 mt-4" type="submit">Añadir Pedido</button>
+        <button class="btn btn-primary w-100 mt-4" type="submit">Modificar</button>
     </form>
 </section>  

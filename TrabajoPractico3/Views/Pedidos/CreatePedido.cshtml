@@ -8,17 +8,17 @@
 <section class="section-padding mx-auto seccion-form">
     <form method="post" class="mx-auto form-login" asp-controller="Pedidos" asp-action="AltaPedido">
         <h2 class="mb-5 text-center" id="">Nuevo Pedido</h2>
-        <div class="input-group">
-            <span class="input-group-text" id="basic-addon1"><i class="fas fa-user">Numero de Pedido</i></span>
-            <input type="number" class="form-control" placeholder="Numero de Pedido" aria-label="Numero de Pedido" aria-describedby="basic-addon1" name="id" required>
-        </div>
         <div class="input-group mt-4">
             <span class="input-group-text" id="basic-addon1"><i class="far fa-address-card">Observacion</i></span>
             <input type="text" class="form-control" placeholder="Observacion" aria-label="Observacion" aria-describedby="basic-addon1" name="obs" required>
         </div>
         <div class="input-group mt-4">
             <span class="input-group-text" id="basic-addon1"><i class="fas fa-mobile-alt">Estado</i></span>
-            <input type="text" class="form-control" placeholder="Estado" aria-label="Estado" aria-describedby="basic-addon1" name="estado" required>
+            <select class="form-control" id="estado" name="estado" required>
+                <option value="@TrabajoPractico3.Models.TipoDeEstados.En_camino">En camino</option>
+                <option value="@TrabajoPractico3.Models.TipoDeEstados.Entregado">Entregado</option>
+                <option value="@TrabajoPractico3.Models.TipoDeEstados.No_Entregado">No entregado</option>
+            </select>
         </div><br />
 
         <label for="formGroupExampleInput">Datos del Cliente</label>
@@ -32,7 +32,7 @@
         </div>
         <div class="input-group mt-4">
             <span class="input-group-text" id="basic-addon1"><i class="fas fa-mobile-alt">Teléfono</i></span>
-            <input type="number" class="form-control" placeholder="Telefono" aria-label="Telefono" aria-describedby="basic-addon1" name="telefono" required>
+            <input type="text" class="form-control" placeholder="Telefono" aria-label="Telefono" aria-describedby="basic-addon1" name="telefono" required>
         </div>
 
         <div class="input-group mt-4">

@@ -6,11 +6,11 @@
 <div class="container">
 
     <div class="row">
-        <div class="col-sm-6">
+        <div class="col-sm-10">
             <h3>Listado de Pedidos</h3>
         </div>
-        <div class="col-sm-6">
-            <a class="btn btn-success d-block" asp-action="CreatePedido" asp-controller="Pedidos">Crear Pedido</a>
+        <div class="col-sm-2">
+            <a class="btn btn-success d-block" asp-action="CreatePedido" asp-controller="Pedidos">Agregar pedido</a>
         </div>
 
         <div class="row">
@@ -33,7 +33,7 @@
                                 <tr>
                                     <td>@item.Id</td>
                                     <td>@item.Obs</td>
-                                    <td>@item.Estado</td>
+                                    <td>@item.Estado.ToString()</td>
                                     <td>@item.Cliente.Nombre</td>
                                     <td>
                                         <a asp-controller="Pedidos" asp-action="Modificar" asp-route-id="@item.Id" class="btn btn-warning">Editar</a>

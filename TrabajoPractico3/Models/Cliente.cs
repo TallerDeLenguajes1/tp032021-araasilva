@@ -11,13 +11,13 @@ namespace TrabajoPractico3.Models
         private static int id = 0;
         private string nombre;
         private string direccion;
-        private long telefono;
+        private string telefono;
 
         public Cliente()
         {
         }
 
-        public Cliente(string nombre, string direccion, long telefono)
+        public Cliente(string nombre, string direccion, string telefono)
         {
             id++;
             this.nombre = nombre;
@@ -28,6 +28,6 @@ namespace TrabajoPractico3.Models
         public int Id { get => id; set => id = value; }
         public string Nombre { get => nombre; set => nombre = value; }
         public string Direccion { get => direccion; set => direccion = value; }
-        public long Telefono { get => telefono; set => telefono = value; }
+        public string Telefono { get => telefono; set => telefono = value; }
     }
 }

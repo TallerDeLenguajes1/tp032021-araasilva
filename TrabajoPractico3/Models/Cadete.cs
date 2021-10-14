@@ -11,7 +11,7 @@ namespace TrabajoPractico3.Models
         private int id;
         private string nombre;
         private string direccion;
-        private long telefono;
+        private string telefono;
         private List<Pedido> pedidos;
 
         public Cadete()
@@ -19,7 +19,7 @@ namespace TrabajoPractico3.Models
             pedidos = new List<Pedido>();
         }
 
-        public Cadete(int id, string nombre, string direccion, long telefono)
+        public Cadete(int id, string nombre, string direccion, string telefono)
         {
             this.id = id;
             this.nombre = nombre;
@@ -31,7 +31,8 @@ namespace TrabajoPractico3.Models
         public int Id { get => id; set => id = value; }
         public string Nombre { get => nombre; set => nombre = value; }
         public string Direccion { get => direccion; set => direccion = value; }
-        public long Telefono { get => telefono; set => telefono = value; }
+        public string Telefono { get => telefono; set => telefono = value; }
         public List<Pedido> Pedidos { get => pedidos; set => pedidos = value; }
+
     }
 }

@@ -29,10 +29,13 @@ namespace TrabajoPractico3.Controllers
         {
             return View(db.Cadeteria.Cadetes);
         }
-        public IActionResult AltaPedido(int id, string nombre, string direccion, long telefono, string obs, string estado, int id_cadete)
+        public IActionResult AltaPedido(string nombre, string direccion, string telefono, string obs, TipoDeEstados estado, int id_cadete)
         {
+            int id = db.Cadeteria.Pedidos.Count() + 1;
             Cliente nuevoCliente = new Cliente(nombre, direccion, telefono);
-            Pedido nuevoPedido = new Pedido(id, nuevoCliente, obs, estado);
+            Pedido nuevoPedido = new Pedido(id, nuevoCliente, obs, estado, id_cadete);
+            //Cadete aCadete = db.buscarCadete(db.Cadeteria.Cadetes, id_cadete);
+            //aCadete.Pedidos.a
             foreach(var item in db.Cadeteria.Cadetes)
             {
                 if(item.Id == id_cadete)
@@ -40,6 +43,8 @@ namespace TrabajoPractico3.Controllers
                     item.Pedidos.Add(nuevoPedido);
                 }
             }
+            //db.guardarPedido(nuevoPedido);
+            //db.guardarCadete(db.Cadeteria.Cadetes);
             db.Cadeteria.Pedidos.Add(nuevoPedido);
             db.guardarPedidos(db.Cadeteria.Pedidos);
             db.guardarCadetes(db.Cadeteria.Cadetes);
@@ -48,15 +53,7 @@ namespace TrabajoPractico3.Controllers
 
         public IActionResult Modificar(int id)
         {
-            Pedido pedidoADevolver = null;
-            for (int i = 0; i<db.Cadeteria.Pedidos.Count(); i++)
-            {
-                if(db.Cadeteria.Pedidos[i].Id == id)
-                {
-                    pedidoADevolver = db.Cadeteria.Pedidos[i];
-                    break;
-                }
-            }
+            Pedido pedidoADevolver = db.buscarPedido(db.Cadeteria.Pedidos, id);
             if(pedidoADevolver != null)
             {
                 return View(pedidoADevolver);
@@ -64,17 +61,11 @@ namespace TrabajoPractico3.Controllers
             return View();
         }
 
-        public IActionResult ModificarPedido(int id, string obs, string estado, string nombre, string direccion, long telefono)
+        public IActionResult ModificarPedido(int id, string obs, TipoDeEstados estado, string nombre, string direccion, string telefono, int id_cadete)
         {
-            Pedido pedidoAModificar = null;
-            for (int i = 0; i < db.Cadeteria.Cadetes.Count(); i++)
-            {
-                if (db.Cadeteria.Pedidos[i].Id == id)
-                {
-                    pedidoAModificar = db.Cadeteria.Pedidos[i];
-                    break;
-                }
-            }
+            Pedido pedidoAModificar = db.buscarPedido(db.Cadeteria.Pedidos, id);
+            Cadete actualizarCadete = db.buscarCadete(db.Cadeteria.Cadetes, id_cadete);
+          
             if (pedidoAModificar != null)
             {
                 pedidoAModificar.Obs = obs;
@@ -83,13 +74,17 @@ namespace TrabajoPractico3.Controllers
                 pedidoAModificar.Cliente.Direccion = direccion;
                 pedidoAModificar.Cliente.Telefono = telefono;
             }
+
+            Pedido pedidoCadete = db.buscarPedido(actualizarCadete.Pedidos, id);
+            pedidoCadete = pedidoAModificar;
+
             db.guardarPedidos(db.Cadeteria.Pedidos);
+            db.guardarCadetes(db.Cadeteria.Cadetes);
             return View("index", db.Cadeteria.Pedidos);
         }
         public IActionResult Borrar(int id)
         {
-            db.Cadeteria.Pedidos.RemoveAll(x => x.Id == id);
-            db.guardarPedidos(db.Cadeteria.Pedidos);
+            db.DeletePedido(id);
             return View("Index", db.Cadeteria.Pedidos);
         }
     }

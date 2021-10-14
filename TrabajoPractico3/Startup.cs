@@ -10,17 +10,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TrabajoPractico3.Models;
+using NLog;
 
 namespace TrabajoPractico3
 {
     public class Startup
     {
-        static readonly DbTemporal db = new();
+        static readonly DbTemporal db = new DbTemporal();
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
-            db.Cadeteria.Cadetes = db.getCadetes();
-            db.Cadeteria.Pedidos = db.getPedidos();
+            
         }
 
         public IConfiguration Configuration { get; }

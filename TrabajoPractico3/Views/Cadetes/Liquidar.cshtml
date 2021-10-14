@@ -1,0 +1,45 @@
+﻿@model TrabajoPractico3.Models.Cadete
+@{
+    ViewData["Title"] = "Liquidacion de Cadete";
+
+    int cant=0;
+    foreach(var item in Model.Pedidos)
+    {
+        if(item.Estado == TipoDeEstados.Entregado)
+        {
+            cant += 100;
+        }
+    }
+}
+
+<div class="alert alert-warning" role="alert">
+    Recuerde que solo se pagaran los pedidos Entregados!
+</div>
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Numero de pedido</th>
+            <th scope="col">Dierccion</th>
+            <th scope="col">Estado</th>
+            <th scope="col">Observacion</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Pedidos)
+        {
+            <tr>
+                <th scope="row">@item.Id</th>
+                <td>@item.Cliente.Direccion</td>
+                <td>@item.Estado</td>
+                <td>@item.Obs</td>
+            </tr>
+        }
+        <tr>
+            <th></th>
+            <th></th>
+            <th>TOTAL</th>
+            <th>$@cant</th>
+        </tr>
+    </tbody>
+</table>
+<a type="submit" asp-action="LiquidarCadete" asp-controller="Cadetes" class="btn btn-info" asp-route-id="@Model.Id">Pagar</a>

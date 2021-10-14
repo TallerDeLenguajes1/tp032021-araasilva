@@ -1,3 +1,1 @@
-[]
-d":39726153,"Obs":"htdd","Estado":"Tucum\u00E1n","Cliente":{"Id":5,"Nombre":"asd","Direccion":"Mariano moreno","Telefono":856}}]
-","Telefono":3815536831}},{"Id":0,"Obs":"htdd","Estado":"Tucum\u00E1n","Cliente":{"Id":5,"Nombre":"abigail","Direccion":"Mariano moreno","Telefono":65456465}},{"Id":39726153,"Obs":"htdd","Estado":"Tucum\u00E1n","Cliente":{"Id":5,"Nombre":"asd","Direccion":"Mariano moreno","Telefono":856}}]
+[{"Id":1,"Obs":"entrega de comida","Estado":1,"Cliente":{"Id":1,"Nombre":"abigail","Direccion":"Mariano moreno","Telefono":"\u002B543815536831"},"Id_cadete":39726153}]
