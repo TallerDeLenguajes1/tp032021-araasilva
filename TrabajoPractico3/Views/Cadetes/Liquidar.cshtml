@@ -2,10 +2,10 @@
 @{
     ViewData["Title"] = "Liquidacion de Cadete";
 
-    int cant=0;
-    foreach(var item in Model.Pedidos)
+    int cant = 0;
+    foreach (var item in Model.Pedidos)
     {
-        if(item.Estado == TipoDeEstados.Entregado)
+        if (item.Estado == TipoDeEstados.Entregado)
         {
             cant += 100;
         }
@@ -42,4 +42,11 @@
         </tr>
     </tbody>
 </table>
-<a type="submit" asp-action="LiquidarCadete" asp-controller="Cadetes" class="btn btn-info" asp-route-id="@Model.Id">Pagar</a>
+@if (cant > 0)
+{
+    <a type="submit" asp-action="LiquidarCadete" asp-controller="Cadetes" class="btn btn-info" asp-route-id="@Model.Id">Pagar</a>
+}
+else
+{
+<a type="submit" asp-action="LiquidarCadete" asp-controller="Cadetes" class="btn btn-info" asp-route-id="@Model.Id" disabled>Pagar</a>
+}

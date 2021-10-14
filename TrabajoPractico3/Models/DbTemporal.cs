@@ -157,28 +157,22 @@ namespace TrabajoPractico3.Models
             {
                 // 1- leer mis cadetes 
                 List<Pedido> listaDePedidos = getPedidos();
-
+                Pedido pedido1 = listaDePedidos.Find(x => x.Id == id);
+                Cadete cadeteAModificar = buscarCadete(Cadeteria.Cadetes, pedido1.Id_cadete);
                 //// 2- eliminar de la lista los cadetes buscado 
                 listaDePedidos.RemoveAll(x => x.Id == id);
 
                 List<Pedido> nuevo = listaDePedidos.ToList();
 
                 //// 3- Guardar lista en archivo 
-
-                string CadeteJson1 = JsonSerializer.Serialize(nuevo);
-                using (FileStream miArchivo = new FileStream(pathPedidos, FileMode.Create))
-                {
-                    using (StreamWriter writer = new StreamWriter(miArchivo))
-                    {
-                        writer.Write(CadeteJson1);
-                        writer.Close();
-                        writer.Dispose();
-                    }
-                }
+                guardarPedidos(nuevo);
 
                 //// 4 - actualizar la lista de Pedidos
                 Cadeteria.Pedidos = listaDePedidos;
 
+                //// 5 - actualizar pedido en cadete
+                BorrarPedidoEnCadete(cadeteAModificar.Id, id);
+                
             }
             catch (Exception ex)
             {
@@ -200,16 +194,7 @@ namespace TrabajoPractico3.Models
 
                 //// 3- Guardar lista en archivo 
 
-                string CadeteJson1 = JsonSerializer.Serialize(nuevo);
-                using (FileStream miArchivo = new FileStream(pathCadetes, FileMode.Create))
-                {
-                    using (StreamWriter writer = new StreamWriter(miArchivo))
-                    {
-                        writer.Write(CadeteJson1);
-                        writer.Close();
-                        writer.Dispose();
-                    }
-                }
+                guardarCadetes(nuevo);
 
                 //// 4 - actualizar la lista de cadetería 
                 Cadeteria.Cadetes = listaDeCadetes;
@@ -282,8 +267,6 @@ namespace TrabajoPractico3.Models
                 }
                 Cadeteria.Pedidos = listaDePedidos;
                 MofificarPedidoEnCadete(id_cadete, pedidoAModificar);
-
-
             }
             catch (Exception ex)
             {
@@ -334,272 +317,43 @@ namespace TrabajoPractico3.Models
                         }
                     }
                 }
-            }
+            }guardarCadetes(Cadeteria.Cadetes);
         }
-    }
-}
-/*using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text.Json;
-using System.Threading.Tasks;
-using NLog;
-
-namespace TrabajoPractico3.Models
-{
-    public class DbTemporal
-    {
-        public Cadeteria Cadeteria { get; set; }
-        private const string pathCadetes = @"Cadetes.json";
-        private const string pathPedidos = @"Pedidos.json";
-        private static Logger logger = LogManager.GetCurrentClassLogger();
-
-        public DbTemporal()
+        public void BorrarPedidoEnCadete(int id_cadete, int id_pedido)
         {
-            
-        }
-
-        //Save
-        public void guardarCadete(Cadete nuevoCadete)
-        {
-            try
+            foreach(var cadete in Cadeteria.Cadetes)
             {
-                List<Cadete> cadetes = getCadetes();
-                cadetes.Add(nuevoCadete);
-                string jsonString = JsonSerializer.Serialize(cadetes);
-                using(FileStream miArchivoCadetes = new FileStream(pathCadetes, FileMode.Create))
+                if(cadete.Id == id_cadete)
                 {
-                    using(StreamWriter strWriter = new StreamWriter(miArchivoCadetes))
-                    {
-                        strWriter.WriteLine(jsonString);
-                        strWriter.Close();
-                        strWriter.Dispose();
-                    }
-                }
-                Cadeteria.Cadetes.Add(nuevoCadete);
-            }
-            catch (Exception ex)
-            {
-                string error = ex.ToString();
-            }
-            
-        }
-        public void guardarPedido(Pedido nuevoPedido)
-        {
-            try
-            {
-                List<Pedido> pedidos = getPedidos();
-                pedidos.Add(nuevoPedido);
-                string jsonString = JsonSerializer.Serialize(pedidos);
-                using (FileStream miArchivoCadetes = new FileStream(pathPedidos, FileMode.Create))
-                {
-                    using (StreamWriter strWriter = new StreamWriter(miArchivoCadetes))
-                    {
-                        strWriter.WriteLine(jsonString);
-                        strWriter.Close();
-                        strWriter.Dispose();
-                    }
-                }
-                Cadeteria.Pedidos.Add(nuevoPedido);
-            }
-            catch (Exception ex)
-            {
-                string error = ex.ToString();
-            }
-
-        }
-
-        //get
-        public List<Cadete> getCadetes()
-        {
-            List<Cadete> CadetesJson = new List<Cadete>();
-            try
-            {
-                using (FileStream miArchivoCadetes = new FileStream(pathCadetes, FileMode.OpenOrCreate))
-                {
-                    using (StreamReader strReader = new StreamReader(miArchivoCadetes))
-                    {
-                        string cadetes = strReader.ReadToEnd();
-                        strReader.Close();
-                        strReader.Dispose();
-                        CadetesJson = JsonSerializer.Deserialize<List<Cadete>>(cadetes);
-                    }
-                           
-                }
-            }catch (Exception ex)
-            {
-                string error = ex.ToString();
-                logger.Error(error);
-            }
-            return CadetesJson;
-        }
-        public List<Pedido> getPedidos()
-        {
-            List<Pedido> PedidosJson =new List<Pedido>();
-            try
-            {
-                using (FileStream miArchivoCadetes = new FileStream(pathPedidos, FileMode.OpenOrCreate))
-                {
-                    using (StreamReader strReader = new StreamReader(miArchivoCadetes))
-                    {
-                        string pedidos = strReader.ReadToEnd();
-                        strReader.Close();
-                        strReader.Dispose();
-                        PedidosJson = JsonSerializer.Deserialize<List<Pedido>>(pedidos);
-                    }
+                    cadete.Pedidos.RemoveAll(x => x.Id == id_pedido);
+                    break;
                 }
             }
-            catch (Exception ex)
-            {
-                string error = ex.ToString();
-            }
-            return PedidosJson;
+            guardarCadetes(Cadeteria.Cadetes);
         }
-
-        //delete
-        public void DeleteCadete(int id)
+        public bool LiquidarCadete(int id)
         {
-            //List<Cadete> CadeteJson = null;
+            bool bandera = false;
             try
             {
-                // 1- leer mis cadetes 
-                List<Cadete> listaDeCadetes = getCadetes();
-
-                //// 2- eliminar de la lista los cadetes buscado 
-                listaDeCadetes.RemoveAll(x => x.Id == id);
-
-                List<Cadete> nuevo = listaDeCadetes.ToList();
-
-                //// 3- Guardar lista en archivo 
-
-                string CadeteJson1 = JsonSerializer.Serialize(nuevo);
-                using (FileStream miArchivo = new FileStream(pathCadetes, FileMode.Create))
+                Cadete cadeteALiquidar = buscarCadete(Cadeteria.Cadetes, id);
+                foreach(var pedido in cadeteALiquidar.Pedidos)
                 {
-                    using (StreamWriter writer = new StreamWriter(miArchivo))
+                    if(pedido.Estado == TipoDeEstados.Entregado)
                     {
-                        writer.Write(CadeteJson1);
-                        writer.Close();
-                        writer.Dispose();
+                        DeletePedido(pedido.Id);
+                        bandera = true;
                     }
                 }
 
-                //// 4 - actualizar la lista de cadetería 
-                Cadeteria.Cadetes = listaDeCadetes;
-
-            }
-            catch (Exception ex)
+            }catch(Exception ex)
             {
-                string error = ex.ToString();
+                logger.Error(ex.ToString());
+                return false;
             }
-        }
-        public void DeletePedido(int id)
-        {
-            //List<Cadete> CadeteJson = null;
-            try
-            {
-                // 1- leer mis cadetes 
-                List<Pedido> listaDePedidos = getPedidos();
-
-                //// 2- eliminar de la lista los cadetes buscado 
-                listaDePedidos.RemoveAll(x => x.Id == id);
-
-                List<Pedido> nuevo = listaDePedidos.ToList();
-
-                //// 3- Guardar lista en archivo 
-
-                string CadeteJson1 = JsonSerializer.Serialize(nuevo);
-                using (FileStream miArchivo = new FileStream(pathPedidos, FileMode.Create))
-                {
-                    using (StreamWriter writer = new StreamWriter(miArchivo))
-                    {
-                        writer.Write(CadeteJson1);
-                        writer.Close();
-                        writer.Dispose();
-                    }
-                }
-
-                //// 4 - actualizar la lista de Pedidos
-                Cadeteria.Pedidos = listaDePedidos;
-
-            }
-            catch (Exception ex)
-            {
-                string error = ex.ToString();
-            }
+            return bandera;
         }
 
-        //edit
-        public void ModificarCadete(int id, string nombre, string direccion, long telefono)
-        {
-            try
-            {
-                List<Cadete> listaDeCadetes = getCadetes();
-                Cadete cadeteAModificar = buscarCadete(listaDeCadetes, id);
-                if (cadeteAModificar != null)
-                {
-                    cadeteAModificar.Nombre = nombre;
-                    cadeteAModificar.Direccion = direccion;
-                    cadeteAModificar.Telefono = telefono;
-                }
-
-                List<Cadete> nuevo = listaDeCadetes.ToList();
-
-                string CadeteJson1 = JsonSerializer.Serialize(nuevo);
-                using (FileStream miArchivo = new FileStream(pathCadetes, FileMode.Create))
-                {
-                    using (StreamWriter writer = new StreamWriter(miArchivo))
-                    {
-                        writer.Write(CadeteJson1);
-                        writer.Close();
-                        writer.Dispose();
-                    }
-                }
-                Cadeteria.Cadetes = listaDeCadetes;
-            }
-            catch(Exception ex)
-            {
-                string error = ex.ToString();
-            }
-            
-        }
-        public void ModificarPedido(int id, string obs, TipoDeEstados estado, string nombre, string direccion, long telefono)
-        {
-            try
-            {
-                List<Pedido> listaDePedidos = getPedidos();
-                Pedido pedidoAModificar = buscarPedido(Cadeteria.Pedidos, id);
-                if (pedidoAModificar != null)
-                {
-                    pedidoAModificar.Obs = obs;
-                    pedidoAModificar.Estado = estado;
-                    pedidoAModificar.Cliente.Nombre = nombre;
-                    pedidoAModificar.Cliente.Direccion = direccion;
-                    pedidoAModificar.Cliente.Telefono = telefono;
-                }
-                List<Pedido> nuevo = listaDePedidos.ToList();
-
-                string CadeteJson1 = JsonSerializer.Serialize(nuevo);
-                using (FileStream miArchivo = new FileStream(pathPedidos, FileMode.Create))
-                {
-                    using (StreamWriter writer = new StreamWriter(miArchivo))
-                    {
-                        writer.Write(CadeteJson1);
-                        writer.Close();
-                        writer.Dispose();
-                    }
-                }
-                Cadeteria.Pedidos = listaDePedidos;
-            }
-            catch (Exception ex)
-            {
-                string error = ex.ToString();
-            }
-
-        }
-
-        
 
     }
 }
-*/

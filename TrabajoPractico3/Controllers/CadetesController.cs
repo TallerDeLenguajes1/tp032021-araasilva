@@ -70,8 +70,16 @@ namespace TrabajoPractico3.Controllers
 
         public IActionResult LiquidarCadete(int id)
         {
-            return View("Index");
+            if (db.LiquidarCadete(id))
+            {
+                return View("Index");
+            }
+            else
+            {
+                return View("Error");
+            }
         }
+            
 
         public IActionResult Borrar(int id)
         {
