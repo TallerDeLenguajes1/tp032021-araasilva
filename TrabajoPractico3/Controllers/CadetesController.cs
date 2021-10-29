@@ -15,16 +15,19 @@ namespace TrabajoPractico3.Controllers
     {
         private readonly Logger _logger;
         private readonly DbTemporal db;
-        public CadetesController(Logger log, DbTemporal DB)
+        private readonly RepositorioCadete RepoCadete;
+        public CadetesController(Logger log, DbTemporal DB, RepositorioCadete RepoCadete)
         {
             _logger = log;
             _logger.Debug("NLog injected into HomeController");
             db = DB;
+            this.RepoCadete = RepoCadete;
         }
 
         public IActionResult Index()
         {
-            return View(db.Cadeteria.Cadetes);
+            List<Cadete> cadetes = RepoCadete.getAll();
+            return View(cadetes);
         }
 
         public IActionResult CreateCadete()
