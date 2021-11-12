@@ -15,8 +15,8 @@ namespace TrabajoPractico3.Controllers
     {
         private readonly Logger _logger;
         private readonly DbTemporal db;
-        private readonly RepositorioCadete RepoCadete;
-        public CadetesController(Logger log, DbTemporal DB, RepositorioCadete RepoCadete)
+        private readonly IRepositorioCadete RepoCadete;
+        public CadetesController(Logger log, DbTemporal DB, IRepositorioCadete RepoCadete)
         {
             _logger = log;
             _logger.Debug("NLog injected into HomeController");
@@ -26,29 +26,26 @@ namespace TrabajoPractico3.Controllers
 
         public IActionResult Index()
         {
-            List<Cadete> cadetes = RepoCadete.getAll();
-            return View(cadetes);
+            return View(RepoCadete.getAll());
         }
 
         public IActionResult CreateCadete()
         {
             return View();
         }
-        public IActionResult AltaCadete(int id, string nombre, string direccion, string telefono)
+        public IActionResult AltaCadete(string nombre, string direccion, string telefono)
         {
-            Cadete nuevoCadete = new Cadete(id, nombre, direccion, telefono);
-            db.Cadeteria.Cadetes.Add(nuevoCadete);
-            db.guardarCadetes(db.Cadeteria.Cadetes);
-            return View("Index", db.Cadeteria.Cadetes);
-            /*Cadete nuevoCadete = new Cadete(id,nombre, direccion, telefono);
-            db.guardarCadete(nuevoCadete);
-            return View("Index",db.Cadeteria.Cadetes);*/
+            Cadete nuevoCadete = new Cadete(nombre, direccion, telefono);
+            //db.Cadeteria.Cadetes.Add(nuevoCadete);
+            //db.guardarCadetes(db.Cadeteria.Cadetes);
+            RepoCadete.SaveCadete(nuevoCadete);
+            return View("Index", RepoCadete.getAll());
         }
 
         public IActionResult Modificar(int id)
         {
-            Cadete cadeteADevolver = db.buscarCadete(db.Cadeteria.Cadetes, id);
-            
+            List<Cadete> cadetes = RepoCadete.getAll();
+            Cadete cadeteADevolver = cadetes.Find(x => x.Id == id);
             if (cadeteADevolver != null)
                 return View(cadeteADevolver);
             else
@@ -56,8 +53,11 @@ namespace TrabajoPractico3.Controllers
         }
         public IActionResult ModificarCadete(int id, string nombre, string direccion, string telefono)
         {
-            db.ModificarCadete(id, nombre, direccion, telefono);
-            return View("Index", db.Cadeteria.Cadetes);
+            Cadete nuevo = new Cadete(nombre, direccion, telefono);
+            nuevo.Id= id;
+            //db.ModificarCadete(id, nombre, direccion, telefono);
+            RepoCadete.UpdateCadete(nuevo);         
+            return View("Index", RepoCadete.getAll());
         }
 
         public IActionResult Liquidar(int id)
@@ -86,8 +86,8 @@ namespace TrabajoPractico3.Controllers
 
         public IActionResult Borrar(int id)
         {
-            db.DeleteCadete(id);
-            return View("Index", db.Cadeteria.Cadetes);
+            //db.DeleteCadete(id);
+            return View("Index", RepoCadete.getAll());
         }
     }
 }

@@ -28,11 +28,12 @@ namespace TrabajoPractico3
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            RepositorioCadete RepoCadete = new RepositorioCadete(Configuration.GetConnectionString("Default"));
+            IRepositorioCadete RepoCadete = new RepositorioCadeteSQLITE(Configuration.GetConnectionString("Default"));
             services.AddControllersWithViews();
             services.AddSingleton(NLogBuilder.ConfigureNLog("nlog.config").GetCurrentClassLogger());
             services.AddSingleton(RepoCadete);
             services.AddSingleton(db);
+            services.AddSession();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
