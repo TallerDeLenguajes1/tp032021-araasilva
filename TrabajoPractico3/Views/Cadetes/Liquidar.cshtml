@@ -1,18 +1,11 @@
 ﻿@model TrabajoPractico3.Models.Cadete
 @{
-    ViewData["Title"] = "Liquidacion de Cadete";
-
-    int cant = 0;
-    foreach (var item in Model.Pedidos)
-    {
-        if (item.Estado == TipoDeEstados.Entregado)
-        {
-            cant += 100;
-        }
-    }
+    ViewData["Title"] = "Liquidacion de Cadetes";
 }
 
-<div class="alert alert-warning" role="alert">
+
+<!--
+    <div class="alert alert-warning" role="alert">
     Recuerde que solo se pagaran los pedidos Entregados!
 </div>
 <table class="table">
@@ -25,28 +18,12 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model.Pedidos)
-        {
-            <tr>
-                <th scope="row">@item.Id</th>
-                <td>@item.Cliente.Direccion</td>
-                <td>@item.Estado</td>
-                <td>@item.Obs</td>
-            </tr>
-        }
+       
         <tr>
             <th></th>
             <th></th>
-            <th>TOTAL</th>
-            <th>$@cant</th>
-        </tr>
+            
     </tbody>
-</table>
-@if (cant > 0)
-{
-    <a type="submit" asp-action="LiquidarCadete" asp-controller="Cadetes" class="btn btn-info" asp-route-id="@Model.Id">Pagar</a>
-}
-else
-{
-<a type="submit" asp-action="LiquidarCadete" asp-controller="Cadetes" class="btn btn-info" asp-route-id="@Model.Id" disabled>Pagar</a>
-}
+
+
+-->

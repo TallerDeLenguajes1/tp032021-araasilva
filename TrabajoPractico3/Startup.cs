@@ -16,7 +16,7 @@ namespace TrabajoPractico3
 {
     public class Startup
     {
-        static readonly DbTemporal db = new DbTemporal();
+      
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -29,10 +29,11 @@ namespace TrabajoPractico3
         public void ConfigureServices(IServiceCollection services)
         {
             IRepositorioCadete RepoCadete = new RepositorioCadeteSQLITE(Configuration.GetConnectionString("Default"));
+            IRepositorioPedido RepoPedido = new RepositorioPedidoSQLite(Configuration.GetConnectionString("Default"));
             services.AddControllersWithViews();
             services.AddSingleton(NLogBuilder.ConfigureNLog("nlog.config").GetCurrentClassLogger());
             services.AddSingleton(RepoCadete);
-            services.AddSingleton(db);
+            services.AddSingleton(RepoPedido);
             services.AddSession();
         }
 

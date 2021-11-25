@@ -22,7 +22,6 @@
                             <td>Nombre</td>
                             <td>Direccion</td>
                             <td>Telefono</td>
-                            <td>Cant de pedidos</td>
                             <td>Acciones</td>
                         </tr>
                     </thead>
@@ -34,13 +33,8 @@
                                 <td>@item.Nombre</td>
                                 <td>@item.Direccion</td>
                                 <td>@item.Telefono</td>
-                                <td>@item.Pedidos.Count()</td>
                                 <td>
                                 <a asp-controller="Cadetes" asp-action="Modificar" asp-route-id="@item.Id" class="btn btn-warning">Editar</a>
-                                    @if(item.Pedidos.Count() > 0)
-                                     {
-                                        <a asp-controller="Cadetes" asp-action="Liquidar" asp-route-id="@item.Id" class="btn btn-info">Pagar</a>
-                                     }
                                 <a asp-controller="Cadetes" asp-action="Borrar" asp-route-id="@item.Id" class="btn btn-danger">Eliminar</a>
                             </td>
                         </tr>
