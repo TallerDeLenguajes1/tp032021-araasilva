@@ -12,12 +12,11 @@ namespace TrabajoPractico3.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly Logger _logger;
+       
 
-        public HomeController(ILogger<HomeController> logger, Logger log)
+        public HomeController()
         {
-            _logger = log;
-            _logger.Debug("NLog injected into HomeController");
+           
         }
 
         public IActionResult Index()

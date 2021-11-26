@@ -3,15 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Data.SQLite;
+using NLog;
 
 namespace TrabajoPractico3.Models
 {
     public class RepositorioPedidoSQLite : IRepositorioPedido
     {
         private readonly string connectionString;
-        public RepositorioPedidoSQLite(string connection)
+        private readonly Logger logger;
+        public RepositorioPedidoSQLite(string connection, Logger logger)
         {
             connectionString = connection;
+            this.logger = logger;
         }
 
         public List<Pedido> getAll()
@@ -56,7 +59,7 @@ namespace TrabajoPractico3.Models
             }
             catch (Exception ex)
             {
-                string log = ex.ToString();
+                logger.Error (ex.ToString());
             }
 
             return ListaDePedidos;
@@ -84,7 +87,7 @@ namespace TrabajoPractico3.Models
             }
             catch (Exception ex)
             {
-                string log = ex.ToString();
+                logger.Error(ex.ToString());
             }
         }
         private void SaveCliente(Cliente nuevoCliente)
@@ -108,7 +111,7 @@ namespace TrabajoPractico3.Models
             }
             catch(Exception ex)
             {
-                string log = ex.Message;
+                logger.Error(ex.ToString());
             }
         }
         public void UpdatePedido(Pedido pedido)
@@ -134,7 +137,7 @@ namespace TrabajoPractico3.Models
             }
             catch (Exception ex)
             {
-                string log = ex.ToString();
+                logger.Error(ex.ToString());
             }
         }
         private void UpdateCliente(Cliente cliente)
@@ -180,7 +183,7 @@ namespace TrabajoPractico3.Models
             }
             catch (Exception ex)
             {
-                string log = ex.ToString();
+                logger.Error(ex.ToString());
             }
 
         }

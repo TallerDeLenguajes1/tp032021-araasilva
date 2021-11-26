@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SQLite;
-
+using NLog;
 
 namespace TrabajoPractico3.Models
 {
@@ -13,17 +13,17 @@ namespace TrabajoPractico3.Models
     {
 
         private readonly string connectionString;
-        //private readonly SQLiteConnection conexion;
-        public RepositorioCadeteSQLITE(string connectionString)
+        private readonly Logger logger;
+        public RepositorioCadeteSQLITE(string connectionString, Logger logger)
         {
             this.connectionString = connectionString;
-            //conexion = new SQLiteConnection(connectionString);
+            this.logger = logger;
         }
 
         public List<Cadete> getAll()
         {
             List<Cadete> ListaDeCadetes = new List<Cadete>();
-            string SqlQuery = "Select * from Cadetes WHERE activo = 1;";
+            string SqlQuery = @"Select * from Cadetes WHERE activo = 1;";
             try{
                 using(SQLiteConnection conexion = new SQLiteConnection(connectionString))
                 {                
@@ -47,7 +47,7 @@ namespace TrabajoPractico3.Models
                 }    
                 
             }catch(Exception ex){
-                string log = ex.ToString();
+                logger.Error(ex.ToString());
             }
             
             return ListaDeCadetes;
@@ -78,12 +78,12 @@ namespace TrabajoPractico3.Models
                     conexion.Close();
                 }
             }catch(Exception ex){
-                string log = ex.ToString();
+                logger.Error(ex.ToString());
             }
         }
         public void UpdateCadete(Cadete cadete)
         {
-            string SqlQuery = @"UPDATE Cadetes SET cadeteNombre= @nombre, cadeteDireccion = @direccion, cadeteTelefono = @telefono, activo= 1 WHERE cadeteID = @id;";
+            string SqlQuery = @"UPDATE Cadetes SET cadeteNombre= @nombre, cadeteDireccion = @direccion, cadeteTelefono = @telefono, activo= 1 WHERE cadeteId = @id;";
             try{
                 using (SQLiteConnection conexion = new SQLiteConnection(connectionString))
                 {
@@ -99,8 +99,7 @@ namespace TrabajoPractico3.Models
                     conexion.Close();
                 }
             }catch(Exception ex){
-                string log = ex.ToString();
-            }
+                logger.Error(ex.ToString());            }
             
         }
 
@@ -120,7 +119,7 @@ namespace TrabajoPractico3.Models
                     conexion.Close();
                 }
             }catch(Exception ex){
-                string log= ex.ToString();
+                logger.Error(ex.ToString());
             }
             
         }

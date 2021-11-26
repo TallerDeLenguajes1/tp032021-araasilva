@@ -13,12 +13,10 @@ namespace TrabajoPractico3.Controllers
 {
     public class CadetesController : Controller
     {
-        private readonly Logger _logger;
+        
         private readonly IRepositorioCadete RepoCadete;
-        public CadetesController(Logger log,IRepositorioCadete RepoCadete)
+        public CadetesController(IRepositorioCadete RepoCadete)
         {
-            _logger = log;
-            _logger.Debug("NLog injected into HomeController");
             this.RepoCadete = RepoCadete;
         }
 
@@ -54,8 +52,6 @@ namespace TrabajoPractico3.Controllers
             RepoCadete.UpdateCadete(nuevo);         
             return View("Index", RepoCadete.getAll());
         }
-            
-
         public IActionResult Borrar(int id)
         {
             RepoCadete.Delete(id);

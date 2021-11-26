@@ -11,15 +11,12 @@ namespace TrabajoPractico3.Controllers
 {
     public class PedidosController : Controller
     {
-        private readonly Logger _logger;
         private readonly IRepositorioPedido RepoPedido;
         private readonly IRepositorioCadete RepoCadete;
 
 
-        public PedidosController(Logger log, IRepositorioPedido RepoPedido, IRepositorioCadete RepoCadete)
+        public PedidosController(IRepositorioPedido RepoPedido, IRepositorioCadete RepoCadete)
         {
-            _logger = log;
-            _logger.Debug("NLog injected into HomeController");
             this.RepoPedido = RepoPedido;
             this.RepoCadete = RepoCadete;
         }

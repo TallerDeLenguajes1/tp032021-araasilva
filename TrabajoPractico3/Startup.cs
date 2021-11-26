@@ -11,6 +11,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using TrabajoPractico3.Models;
 using NLog;
+using TrabajoPractico3.Models.Entidades;
 
 namespace TrabajoPractico3
 {
@@ -28,13 +29,24 @@ namespace TrabajoPractico3
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            IRepositorioCadete RepoCadete = new RepositorioCadeteSQLITE(Configuration.GetConnectionString("Default"));
-            IRepositorioPedido RepoPedido = new RepositorioPedidoSQLite(Configuration.GetConnectionString("Default"));
             services.AddControllersWithViews();
-            services.AddSingleton(NLogBuilder.ConfigureNLog("nlog.config").GetCurrentClassLogger());
+            Logger logger = NLogBuilder.ConfigureNLog("Nlog.config").GetCurrentClassLogger();
+            IRepositorioCadete RepoCadete = new RepositorioCadeteSQLITE(Configuration.GetConnectionString("Default"), logger);
+            IRepositorioPedido RepoPedido = new RepositorioPedidoSQLite(Configuration.GetConnectionString("Default"), logger);
+            IRepositorioUsuario RepoUsuario = new RepositorioUsuarioSQLite(Configuration.GetConnectionString("Default"), logger);
+            
+            
             services.AddSingleton(RepoCadete);
             services.AddSingleton(RepoPedido);
-            services.AddSession();
+            services.AddSingleton(RepoUsuario);
+
+            services.AddDistributedMemoryCache();
+            services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromSeconds(3600);
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -54,6 +66,8 @@ namespace TrabajoPractico3
             app.UseStaticFiles();
 
             app.UseRouting();
+             
+            app.UseSession();
 
             app.UseAuthorization();
 
