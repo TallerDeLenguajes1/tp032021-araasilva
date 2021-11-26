@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -6,7 +7,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using TrabajoPractico3.Models;
-using NLog.Web;
+using TrabajoPractico3.Models.ViewModels;
 using NLog;
 
 namespace TrabajoPractico3.Controllers
@@ -15,47 +16,76 @@ namespace TrabajoPractico3.Controllers
     {
         
         private readonly IRepositorioCadete RepoCadete;
-        public CadetesController(IRepositorioCadete RepoCadete)
+        private readonly IMapper mapper;
+        private readonly Logger _logger;
+        public CadetesController(IRepositorioCadete RepoCadete, IMapper mapper, Logger _logger)
         {
+            this._logger = _logger;
             this.RepoCadete = RepoCadete;
+            this.mapper = mapper;
         }
 
         public IActionResult Index()
         {
-            return View(RepoCadete.getAll());
+            var listadoCadetesVM = mapper.Map<List<CadeteViewModel>>(RepoCadete.getAll());
+            return View(listadoCadetesVM);
         }
 
         public IActionResult CreateCadete()
         {
             return View();
         }
-        public IActionResult AltaCadete(string nombre, string direccion, string telefono)
-        {
-            Cadete nuevoCadete = new Cadete(nombre, direccion, telefono);
-            RepoCadete.SaveCadete(nuevoCadete);
-            return View("Index", RepoCadete.getAll());
+        public IActionResult AltaCadete(CadeteViewModel cadete)
+        {            
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    var nuevoCadete = mapper.Map<Cadete>(cadete);    
+                    RepoCadete.SaveCadete(nuevoCadete);
+                    var listadoCadetesVM = mapper.Map<List<CadeteViewModel>>(RepoCadete.getAll());
+                    return View("Index", listadoCadetesVM);
+                }
+                else
+                {
+                    return View("CreateCadete");
+                }
+            }catch(Exception ex)
+            {
+                _logger.Error(ex.Message);
+                return View("CreateCadete");
+            }
         }
 
+        [HttpGet]
         public IActionResult Modificar(int id)
         {
-            List<Cadete> cadetes = RepoCadete.getAll();
-            Cadete cadeteADevolver = cadetes.Find(x => x.Id == id);
+            var cadetes = mapper.Map<List<CadeteViewModel>>(RepoCadete.getAll());
+            CadeteViewModel cadeteADevolver = cadetes.Find(x => x.Id == id);
             if (cadeteADevolver != null)
+            {
                 return View(cadeteADevolver);
+            }
             else
-                return View("Index");
+            {
+                var listadoCadetesVM = mapper.Map<List<CadeteViewModel>>(RepoCadete.getAll());
+                return View("Index", listadoCadetesVM);
+            }                
         }
-        public IActionResult ModificarCadete(int id, string nombre, string direccion, string telefono)
+        [HttpPost]
+        public IActionResult Modificar(int id, string nombre, string direccion, string telefono)
         {
             Cadete nuevo = new Cadete(nombre, direccion, telefono);
             nuevo.Id = id;
-            RepoCadete.UpdateCadete(nuevo);         
-            return View("Index", RepoCadete.getAll());
+            RepoCadete.UpdateCadete(nuevo);
+            var listadoCadetesVM = mapper.Map<List<CadeteViewModel>>(RepoCadete.getAll());
+            return View("Index", listadoCadetesVM);
         }
         public IActionResult Borrar(int id)
         {
             RepoCadete.Delete(id);
-            return View("Index", RepoCadete.getAll());
+            var listadoCadetesVM = mapper.Map<List<CadeteViewModel>>(RepoCadete.getAll());
+            return View("Index", listadoCadetesVM);
         }
     }
 }

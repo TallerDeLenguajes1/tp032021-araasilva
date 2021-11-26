@@ -116,7 +116,7 @@ namespace TrabajoPractico3.Models
         }
         public void UpdatePedido(Pedido pedido)
         {
-            UpdateCliente(pedido.Cliente);
+            UpdateCliente(pedido.Cliente);//solucionar lo del IdCliente
             string SqlQuery = @"UPDATE Pedidos SET pedidoObs= @obs, pedidoEstado = @estado, cadeteId = @cadeteId, clienteId= @clienteId, activo= 1 WHERE pedidoID = @id;";
             try
             {

@@ -31,6 +31,7 @@ namespace TrabajoPractico3
         {
             services.AddControllersWithViews();
             Logger logger = NLogBuilder.ConfigureNLog("Nlog.config").GetCurrentClassLogger();
+            services.AddSingleton(logger);
             IRepositorioCadete RepoCadete = new RepositorioCadeteSQLITE(Configuration.GetConnectionString("Default"), logger);
             IRepositorioPedido RepoPedido = new RepositorioPedidoSQLite(Configuration.GetConnectionString("Default"), logger);
             IRepositorioUsuario RepoUsuario = new RepositorioUsuarioSQLite(Configuration.GetConnectionString("Default"), logger);
@@ -47,6 +48,7 @@ namespace TrabajoPractico3
                 options.Cookie.HttpOnly = true;
                 options.Cookie.IsEssential = true;
             });
+            services.AddAutoMapper(typeof(PerfilDeMappeo));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

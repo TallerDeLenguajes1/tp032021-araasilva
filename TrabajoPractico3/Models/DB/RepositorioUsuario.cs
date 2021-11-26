@@ -18,40 +18,37 @@ namespace TrabajoPractico3.Models.Entidades
             this.connectionString = connectionString;
         }
 
-        public List<Usuario> getAll()
+
+        public int GetUsuarioID(string usuario, string contrasenia)
         {
-            List<Usuario> usuariosADevolver = new List<Usuario>();
-            string SQLquery = @"SELECT * FROM Usuarios;";
+            int id = 0;
             try
             {
-                using (SQLiteConnection conexion = new SQLiteConnection(connectionString))
+                using (SQLiteConnection connection = new SQLiteConnection(connectionString))
                 {
-                    using (SQLiteCommand command = new SQLiteCommand(SQLquery, conexion))
+                    string sqlQuery = "SELECT usuarioId FROM Usuarios WHERE usuario = @usuario AND contraseña = @contrasenia;";
+
+                    using (SQLiteCommand command = new SQLiteCommand(sqlQuery, connection))
                     {
-                        conexion.Open();
-                        using (SQLiteDataReader DataReader = command.ExecuteReader())
+                        command.Parameters.AddWithValue("@usuario", usuario);
+                        command.Parameters.AddWithValue("@usuarioPassword", contrasenia);
+                        connection.Open();
+
+                        using (SQLiteDataReader dataReader = command.ExecuteReader())
                         {
-                            while (DataReader.Read())
-                            {
-                                Usuario nuevo = new Usuario()
-                                {
-                                    Id = Convert.ToInt32(DataReader["usuarioId"]),
-                                    NombreDeUsuario = DataReader["usuario"].ToString(),
-                                    Email = DataReader["email"].ToString(),
-                                    Contrasenia = DataReader["contraseña"].ToString()
-                                };
-                                usuariosADevolver.Add(nuevo);
-                            }
+                            dataReader.Read();
+                            id = Convert.ToInt32(dataReader["usuarioId"]);
+                            connection.Close();
                         }
-                        conexion.Close();
                     }
                 }
             }
             catch (Exception ex)
             {
-                logger.Error(ex.ToString());
+                logger.Error(ex.Message);
             }
-            return usuariosADevolver;
+
+            return id;
         }
         public void SaveUsuario(Usuario usuario)
         {

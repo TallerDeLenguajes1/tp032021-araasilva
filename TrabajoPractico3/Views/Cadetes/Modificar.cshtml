@@ -1,10 +1,10 @@
 ﻿@{ 
     ViewData["Title"] = "Modificar Cadete";
 }
-@model TrabajoPractico3.Models.Cadete 
+@model TrabajoPractico3.Models.ViewModels.CadeteViewModel
 
 <section class="section-padding mx-auto seccion-form">
-    <form method="post" class="mx-auto form-login" asp-controller="Cadetes" asp-action="ModificarCadete">
+    <form method="post" class="mx-auto form-login" asp-controller="Cadetes" asp-action="Modificar">
         <h2 class="mb-5 text-center">Modificar Cadete</h2>
         <div class="input-group">
             <input type="hidden" value="@Model.Id" name="id" required>

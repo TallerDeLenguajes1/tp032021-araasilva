@@ -988,3 +988,4 @@ C:\Users\arakp\Documents\Facultad\Segundo Año\Taller 2\Trabajos Practicos\Traba
 C:\Users\arakp\Documents\Facultad\Segundo Año\Taller 2\Trabajos Practicos\TrabajoPractico3-Rama Desarrollo\TrabajoPractico3\bin\Debug\net5.0\AutoMapper.dll
 C:\Users\arakp\Documents\Facultad\Segundo Año\Taller 2\Trabajos Practicos\TrabajoPractico3-Rama Desarrollo\TrabajoPractico3\bin\Debug\net5.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 C:\Users\arakp\Documents\Facultad\Segundo Año\Taller 2\Trabajos Practicos\TrabajoPractico3-Rama Desarrollo\TrabajoPractico3\obj\Debug\net5.0\Razor\Views\Usuarios\Index.cshtml.g.cs
+C:\Users\arakp\Documents\Facultad\Segundo Año\Taller 2\Trabajos Practicos\TrabajoPractico3-Rama Desarrollo\TrabajoPractico3\obj\Debug\net5.0\Razor\Views\Usuarios\CreateUsuario.cshtml.g.cs
